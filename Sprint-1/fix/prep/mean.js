@@ -16,17 +16,8 @@ const salaries = [10, 20, 30, 40, 60, 80, 80];
 const median = calculateMedian(salaries);
 const mean = calculateMean(salaries);
 module.exports = { calculateMedian, calculateMean };
-console.log(`The median salary is ${median}`);
-console.log(`The mean salary is ${mean}`);
-console.log(typeof salaries );
 
 const list = [10, 20, 30];
-console.log(typeof list);
-if (typeof list === "object") {
-  console.log("Object");
-}
-else {console.log("not object")
-}
 const copy = list; // This creates a reference, not a copy, so both variables point to the same array in memory.
 // to avoid mutating the original array, we should create a shallow copy:
 // const copy = list.slice();
