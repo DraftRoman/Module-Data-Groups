@@ -17,32 +17,52 @@ it("Given an empty array, returns -Infinity", () => {
     expect(result).toBe(-Infinity);
 });
 
-// Given an empty array
-// When passed to the max function
-// Then it should return -Infinity
-// Delete this test.todo and replace it with a test.
-test.todo("given an empty array, returns -Infinity");
-
 // Given an array with one number
 // When passed to the max function
 // Then it should return that number
+it("Given an array with one number, returns that number", () => {
+    const array = [12];
+    const result = findMax(array);
+    expect(result).toBe(12);
+});
 
 // Given an array with both positive and negative numbers
 // When passed to the max function
 // Then it should return the largest number overall
-
+it("Given an array with positive and negative numbers, returns largest number", () => {
+    const array = [4456, -234];
+    const result = findMax(array);
+    expect(result).toBe(4456);
+});
 // Given an array with just negative numbers
 // When passed to the max function
 // Then it should return the closest one to zero
-
+it("Given an array with negative numbers, returns largest number", () => {
+    const array = [-4456, -234, -5];
+    const result = findMax(array);
+    expect(result).toBe(array[2]);
+});
 // Given an array with decimal numbers
 // When passed to the max function
 // Then it should return the largest decimal number
-
+it("Given an array with decimal numbers, returns largest number", () => {
+    const array = [12.22, 45.67, 66.55, 1945.223, 5.678];
+    const result = findMax(array);
+    expect(result).toBe(array[3]);
+});
 // Given an array with non-number values
 // When passed to the max function
 // Then it should return the max and ignore non-numeric values
-
+it("Given an array with non-number values, returns largest number, ignore non-numeric values", () => {
+    const array = [30, 20, "a", 50, 100, -5];
+    const result = findMax(array);
+    expect(result).toBe(array[4]);
+});
 // Given an array with only non-number values
 // When passed to the max function
 // Then it should return the least surprising value given how it behaves for all other inputs
+it("Given an array with only non-number values, returns NaN", () => {
+    const array = ["a", {}, null, undefined];
+    const result = findMax(array);
+    expect(Number.isNaN(result)).toBe(true);
+});
