@@ -11,6 +11,11 @@ We have set things up already so that this file can see your function from the o
 */
 
 const findMax = require("./max.js");
+it("Given an empty array, returns -Infinity", () => {
+    const array = [];
+    const result = findMax(array);
+    expect(result).toBe(-Infinity);
+});
 
 // Given an empty array
 // When passed to the max function
