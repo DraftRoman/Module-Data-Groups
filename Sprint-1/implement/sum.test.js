@@ -7,13 +7,15 @@ E.g. sum(['hey', 10, 'hi', 60, 10]), target output: 80 (ignore any non-numerical
 */
 
 const sum = require("./sum.js");
-
 // Acceptance Criteria:
-
 // Given an empty array
 // When passed to the sum function
 // Then it should return 0
-test.todo("given an empty array, returns 0")
+it("Given an empty array, returns 0", () => {
+    const array = [];
+    const result = sum(array);
+    expect(result).toBe(0);
+});
 
 // Given an array with just one number
 // When passed to the sum function

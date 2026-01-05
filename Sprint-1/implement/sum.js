@@ -1,4 +1,10 @@
 function sum(elements) {
+    let sum = 0;
+    for (let i = 0; i < elements.length; i++) {
+        sum += elements[i];
+    }
+    return sum;
 }
 
+console.log(sum([]));
 module.exports = sum;
