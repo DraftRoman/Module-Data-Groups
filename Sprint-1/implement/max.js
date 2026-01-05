@@ -1,13 +1,21 @@
 function findMax(elements) {
     if (elements.length === 0) 
         return -Infinity;
-    let max = elements[0];
-    for (let i = 1; i < elements.length; i++) {
-        if (elements[i] > max)
-            max = elements[i];
+    if (!Array.isArray(elements)) {
+        return NaN;
     }
-    return max;
+    let hasNumber = false;
+    let max = -Infinity;
+    for (let i = 0; i < elements.length; i++) {
+        if (typeof elements[i] === "number") {
+            if (!hasNumber || elements[i] > max) {
+                max = elements[i];
+                hasNumber = true;
+            }
+        }
+    }
+    return hasNumber ? max : NaN;
 }
 
-console.log(findMax([30, 20, "a", 50, 100, -5]));
+console.log(findMax(["s", 20, "a", 50, 100, -5, "300"]));
 module.exports = findMax;
