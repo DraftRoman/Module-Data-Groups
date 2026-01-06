@@ -10,5 +10,4 @@ function dedupe(array) {
     return result;
 }
 module.exports = dedupe;
-console.log(dedupe(['b', null, 'a', 'ddb', null, null, undefined, undefined]));
 

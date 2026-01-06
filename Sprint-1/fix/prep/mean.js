@@ -25,8 +25,6 @@ const copy = list; // This creates a reference, not a copy, so both variables po
 // const copy = [...list];
 copy.push(60, 70);
 
-console.log(list);
-console.log(copy);
 
 // Write a function which takes an array as a parameter
 //   and swaps the first element with the last element

@@ -38,7 +38,6 @@ function calculateMedian(list) {
   
 }
 const array = [1, 2, 3, 4, "apple", 6];
-console.log(calculateMedian(array));
-// console.log(array);
+calculateMedian(array);
 
 module.exports = calculateMedian;

@@ -12,5 +12,4 @@ function sum(elements) {
     return foundNumber ? sum : null;
 }
 
-console.log(sum([]));
 module.exports = sum;

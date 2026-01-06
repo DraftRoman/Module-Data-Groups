@@ -17,5 +17,4 @@ function findMax(elements) {
     return hasNumber ? max : NaN;
 }
 
-console.log(findMax(["s", 20, "a", 50, 100, -5, "300"]));
 module.exports = findMax;

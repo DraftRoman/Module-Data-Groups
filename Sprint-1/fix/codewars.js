@@ -42,4 +42,4 @@ function evaluate(arr) {
       return Number(arr[0]);
       }
 }
-console.log(evaluate(array));
+evaluate(array);
