@@ -1,13 +1,14 @@
 function dedupe(array) {
-    for (let i = 0; i < array.length-1; i++) {
-        for (let j = 1; j < array.length; j++) {
-            if (array[i] === array[j] && i != j) {
-                array.splice(j, 1);
-            }
-            
+    const result = [];
+
+    for (const item of array) {
+        if (!result.includes(item)) {
+            result.push(item);
         }
     }
-    return [...new Set(array)];;
+
+    return result;
 }
 module.exports = dedupe;
-console.log(dedupe([]));
+console.log(dedupe(['b', null, 'a', 'ddb', null, null, undefined, undefined]));
+
