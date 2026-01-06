@@ -7,6 +7,7 @@ function dedupe(array) {
             
         }
     }
-    return array;
+    return [...new Set(array)];;
 }
-console.log(dedupe(['a', 'b', 'a', 5, 5]));
+module.exports = dedupe;
+console.log(dedupe([]));
