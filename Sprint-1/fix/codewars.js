@@ -43,3 +43,12 @@ function evaluate(arr) {
       }
 }
 evaluate(array);
+
+
+let sortArray = (value) => {
+  return String(value)
+    .split('')
+    .sort((a, b) => a - b)
+    .join('');
+}
+console.log(sortArray(143526));

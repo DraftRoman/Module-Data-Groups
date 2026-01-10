@@ -5,7 +5,7 @@ function findMax(elements) {
         return NaN;
     }
     let hasNumber = false;
-    let max = -Infinity;
+    let max = elements[0];
     for (let i = 0; i < elements.length; i++) {
         if (typeof elements[i] === "number") {
             if (!hasNumber || elements[i] > max) {

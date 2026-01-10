@@ -4,21 +4,7 @@
 
 // Hint: Please consider scenarios when 'list' doesn't have numbers (the function is expected to return null)
 // or 'list' has mixed values (the function is expected to sort only numbers).
-
-function calculateMedian(list) {
-  let elements = 0;
-  let arr = [];
-  if (!Array.isArray(list))
-    return null;
-  for (let i = 0; i < list.length; i++) {
-    if (typeof list[i] === "number") {
-      elements += 1;
-      arr.push(list[i]);
-    }
-  }
-  if (elements === 0)
-    return null;
-  
+function sorting(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
     let maxIndex = i;
     for (let j = i + 1; j < arr.length; j++) {
@@ -30,7 +16,21 @@ function calculateMedian(list) {
       [arr[i], arr[maxIndex]] = [arr[maxIndex], arr[i]];
     }
   }
-  
+  return arr
+}
+
+function calculateMedian(list) {
+
+  let arr = [];
+  if (!Array.isArray(list))
+    return null;
+  for (let i = 0; i < list.length; i++) {
+    if (typeof list[i] === "number")
+      arr.push(list[i]);
+  }
+  if (arr.length === 0)
+    return null;
+  sorting(arr);
   if (arr.length % 2 === 0)
     return (arr[arr.length / 2 ] + arr[arr.length / 2 - 1]) / 2;
   else
