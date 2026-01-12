@@ -8,7 +8,6 @@ function findFirstRepeat(input) {
     while (true) {
         for (const line of input) {
             frequency += line;
-            console.log(frequency);
             if (seen.has(frequency))
                 return frequency;
             seen.add(frequency);
