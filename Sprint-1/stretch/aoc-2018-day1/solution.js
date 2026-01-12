@@ -1,12 +1,21 @@
 const fs = require("fs");
 
-const input = fs.readFileSync("input.txt", "utf8").trim().split("\n");
+const input = fs.readFileSync("input.txt", "utf8").trim().split("\n").map(Number);;
 let frequency = 0;
-
-for (const line of input) {
-    frequency += Number(line);
-
+const seen = new Set();
+seen.add(0);
+function findFirstRepeat(input) {
+    while (true) {
+        for (const line of input) {
+            frequency += line;
+            console.log(frequency);
+            if (seen.has(frequency))
+                return frequency;
+            seen.add(frequency);
+        }
+    }
 }
 
-console.log("The frequency is", frequency);
+const result = findFirstRepeat(input);
+console.log("The first repeated number after some increases and decreases", result);
 
