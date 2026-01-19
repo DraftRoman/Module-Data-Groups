@@ -19,9 +19,19 @@ test("creates a country currency code lookup for multiple codes",() => {
   expect(createLookup(array)).toEqual(target);
 });
 
+test("An array is a regular array not of arrays, if it's possible we have to change the format of the input", () => {
+  const array = ['US', 'USD', 'CA', 'CAD', 'EUR', "EURO", 'AUS', 'AUD'];
+  const target = 'Invalid of input'
+  expect(createLookup(array)).toEqual(target);
+});
 
+
+test("An array is a regular array not of arrays, if it's possible we have to change the format of the input", () => {
+  const array = [1, 'USD', 'CA', 2, 'AUD'];
+  const target = 'Invalid of input'
+  expect(createLookup(array)).toEqual(target);
+});
 /*
-
 Create a lookup object of key value pairs from an array of code pairs
 
 Acceptance Criteria:
