@@ -10,7 +10,7 @@ as the object contains a key of 'a'
 test("contains returns true for existing property", () => {
     const object = { a: 1, b: 2 };
     const result = contains(object, 'a');
-    expect(result).toBe(true);});
+    expect(result).toEqual(true);});
 
 /* E.g. contains({a: 1, b: 2}, 'c')  returns false
 as the object doesn't contains a key of 'c'
