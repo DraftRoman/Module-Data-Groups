@@ -134,3 +134,42 @@ function QueryString(url){
 
 const url='colour=blue&sort=newest&date=new&country=turkey';
 console.log(QueryString(url));
+
+
+
+function pushHash(items) {
+  const result = {};
+
+  items.forEach((element, index) => {
+    if (index % 2 === 0) {
+      result[element] = items[index + 1];
+    }
+  });
+
+  return result;
+}
+
+
+console.log(pushHash(['a', 'b', 'c', 'd']));
+
+
+function past(h, m, s) {
+  return (h * 24 + m * 60 + s) * 1000
+}
+console.log(past(0, 1, 1)) // returns 61000
+
+
+function XO(str) {
+  let x = 0,
+      o = 0;
+  for (let i = 0; i < str.length; i++){
+    if (str[i].toLowerCase === "x"){
+      x++;
+      }
+    if (str[i].toLowerCase ==="o"){
+      o++;
+    }
+  }
+  return x === o;
+  }
+
