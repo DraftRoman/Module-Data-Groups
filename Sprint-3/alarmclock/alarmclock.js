@@ -7,7 +7,7 @@ function formatTime(seconds) {
     return `${min<10?"0":""}${min}:${sec < 10 ? "0" : ""}${sec}`;
   }
   function message(time) {
-    return "Time Remaining: " + formatTime(time);
+    return "How much time do you can focus: " + formatTime(time);
 }
 let interval = null;
 function countdown(alarmTime) {
@@ -30,8 +30,10 @@ var audio = new Audio("alarmsound.mp3");
 
 function setup() {
   document.getElementById("set").addEventListener("click", () => {
-    setAlarm(document.getElementById('alarmSet').value);
-    countdown(document.getElementById('alarmSet').value);
+    if (document.getElementById('alarmSet').value > 0) {
+      setAlarm(document.getElementById('alarmSet').value);
+      countdown(document.getElementById('alarmSet').value);
+    }
 
   });
 
@@ -42,7 +44,7 @@ function setup() {
       interval = null;
     }
     document.getElementById('alarmSet').value = 0;
-    document.getElementById('timeRemaining').innerHTML = "Time Remaining: 00:00";
+    document.getElementById('timeRemaining').innerHTML = "How much time do you can focus: 00:00";
   });
 }
 
