@@ -4,17 +4,19 @@ function setAlarm(alarmTime) {
 function formatTime(seconds) {
     const min = Math.floor(seconds / 60);
     const sec = seconds % 60;
-    return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+    return `${min<10?"0":""}${min}:${sec < 10 ? "0" : ""}${sec}`;
   }
   function message(time) {
     return "Time Remaining: " + formatTime(time);
+}
+let interval = null;
+function countdown(alarmTime) {
+    if (interval !== null) {
+    clearInterval(interval);
   }
-  
-
-  function countdown(alarmTime) {
-    let interval = setInterval(() => {
+    interval = setInterval(() => {
       alarmTime--;
-      document.getElementById('timeRemaining').innerHTML = message(alarmTime);
+      setAlarm(alarmTime);
       if (alarmTime == 0) {
         clearInterval(interval);
         playAlarm();
@@ -30,12 +32,17 @@ function setup() {
   document.getElementById("set").addEventListener("click", () => {
     setAlarm(document.getElementById('alarmSet').value);
     countdown(document.getElementById('alarmSet').value);
+
   });
 
   document.getElementById("stop").addEventListener("click", () => {
     pauseAlarm();
+    if (interval !== null) {
+      clearInterval(interval);
+      interval = null;
+    }
     document.getElementById('alarmSet').value = 0;
-    document.getElementById('timeRemaining').innerHTML = "Time Remaining: 0:00";
+    document.getElementById('timeRemaining').innerHTML = "Time Remaining: 00:00";
   });
 }
 
