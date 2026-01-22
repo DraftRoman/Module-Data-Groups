@@ -7,7 +7,7 @@ function formatTime(seconds) {
     return `${min<10?"0":""}${min}:${sec < 10 ? "0" : ""}${sec}`;
   }
   function message(time) {
-    return "How much time do you can focus: " + formatTime(time);
+    return "How long can you focus: " + formatTime(time);
 }
 let interval = null;
 function countdown(alarmTime) {
@@ -44,7 +44,7 @@ function setup() {
       interval = null;
     }
     document.getElementById('alarmSet').value = 0;
-    document.getElementById('timeRemaining').innerHTML = "How much time do you can focus: 00:00";
+    document.getElementById('timeRemaining').innerHTML = "How long can you focus: 00:00";
   });
 }
 
