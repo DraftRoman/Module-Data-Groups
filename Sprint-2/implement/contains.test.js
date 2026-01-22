@@ -6,10 +6,30 @@ particular property
 
 E.g. contains({a: 1, b: 2}, 'a') // returns true
 as the object contains a key of 'a'
+*/
+test("contains returns true for existing property", () => {
+    const object = { a: 1, b: 2 };
+    const result = contains(object, 'a');
+    expect(result).toEqual(true);});
 
-E.g. contains({a: 1, b: 2}, 'c') // returns false
+/* E.g. contains({a: 1, b: 2}, 'c')  returns false
 as the object doesn't contains a key of 'c'
 */
+
+test("contains returns false for non-existing property", () => {
+    const object = { a: 1, b: 2 };
+    const result = contains(object, 'c');
+    expect(result).toBe(false);
+});
+// Given an object with properties
+// When passed to contains with a non-existent property name
+// Then it should return false
+test("contains returns false for non-object input", () => {
+    expect(contains(null, 'a')).toBe(false);
+    expect(contains(42, 'a')).toBe(false);
+    expect(contains('string', 'a')).toBe(false);
+    expect(contains([], 'a')).toBe(false);
+});
 
 // Acceptance criteria:
 
@@ -20,16 +40,13 @@ as the object doesn't contains a key of 'c'
 // Given an empty object
 // When passed to contains
 // Then it should return false
-test.todo("contains on empty object returns false");
+test("contains on empty object returns false", () => {
+    const object = {};
+    expect(contains(object, 'a')).toBe(false);
+});
 
-// Given an object with properties
-// When passed to contains with an existing property name
-// Then it should return true
-
-// Given an object with properties
-// When passed to contains with a non-existent property name
-// Then it should return false
-
-// Given invalid parameters like an array
-// When passed to contains
-// Then it should return false or throw an error
+test("Given invalid parameters like an array", () => {
+    const object = [2, 56, 'a', 'b', [], null];
+    const result = contains(object, []);
+    expect(contains(result)).toBe(false);
+});
