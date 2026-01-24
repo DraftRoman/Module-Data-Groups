@@ -1,28 +1,34 @@
 function setAlarm(alarmTime) {
-    document.getElementById('timeRemaining').innerHTML = message(alarmTime);
+  document.getElementById('timeRemaining').innerHTML = message(alarmTime);
+  countdown(alarmTime);
 }
 function formatTime(seconds) {
-    const min = Math.floor(seconds / 60);
-    const sec = seconds % 60;
-    return `${min<10?"0":""}${min}:${sec < 10 ? "0" : ""}${sec}`;
+  const min = Math.floor(seconds / 60);
+  const sec = seconds % 60;
+  if (min === 0 && sec % 2 == 0 && sec < 10) {
+    document.body.style.backgroundColor = 'var(--bg-alarm-red)';
+  } else if (min === 0 && sec % 2 != 0 && sec < 10) {
+    document.body.style.backgroundColor = 'var(--bg-alarm-or)';
   }
-  function message(time) {
-    return "How long can you focus: " + formatTime(time);
+  return `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
+  }
+  function message(alarmTime) {
+    return "How long can you focus: " + formatTime(alarmTime);
 }
-let interval = null;
+let interval = 0;
 function countdown(alarmTime) {
-    if (interval !== null) {
+  if (interval !== 0) {
     clearInterval(interval);
   }
-    interval = setInterval(() => {
-      alarmTime--;
-      setAlarm(alarmTime);
-      if (alarmTime == 0) {
-        clearInterval(interval);
-        playAlarm();
-      }
-    }, 1000);
-  }
+  interval = setInterval(() => {
+    alarmTime--;
+    setAlarm(alarmTime);
+    if (alarmTime <= 0) {
+      clearInterval(interval);
+      playAlarm();
+    }
+  }, 1000);
+}
     
   // DO NOT EDIT BELOW HERE
 
@@ -32,19 +38,18 @@ function setup() {
   document.getElementById("set").addEventListener("click", () => {
     if (document.getElementById('alarmSet').value > 0) {
       setAlarm(document.getElementById('alarmSet').value);
-      countdown(document.getElementById('alarmSet').value);
     }
-
   });
 
   document.getElementById("stop").addEventListener("click", () => {
     pauseAlarm();
-    if (interval !== null) {
+    if (interval !== 0) {
       clearInterval(interval);
-      interval = null;
+      interval = 0;
     }
     document.getElementById('alarmSet').value = 0;
     document.getElementById('timeRemaining').innerHTML = "How long can you focus: 00:00";
+    document.body.style.backgroundColor = 'var(--bg-color)';
   });
 }
 
