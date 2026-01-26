@@ -43,7 +43,7 @@ test("should set heading when button is clicked", () => {
   input.value = "19";
   button.click();
 
-  expect(heading).toHaveTextContent("Time Remaining: 00:19");
+  expect(heading).toHaveTextContent("How long can you focus: 00:19");
 });
 
 test("should split values over 60 seconds into minutes and seconds", () => {
@@ -54,7 +54,7 @@ test("should split values over 60 seconds into minutes and seconds", () => {
   input.value = "119";
   button.click();
 
-  expect(heading).toHaveTextContent("Time Remaining: 01:59");
+  expect(heading).toHaveTextContent("How long can you focus: 01:59");
 });
 
 test("should update the heading while counting down", () => {
@@ -68,7 +68,7 @@ test("should update the heading while counting down", () => {
   for (let i = 18; i > 0; i--) {
     jest.runOnlyPendingTimers();
     const seconds = `${i}`.padStart(2, "0");
-    expect(heading).toHaveTextContent(`Time Remaining: 00:${seconds}`);
+    expect(heading).toHaveTextContent(`How long can you focus: 00:${seconds}`);
   }
 });
 
@@ -102,3 +102,32 @@ test("should play audio when the timer reaches zero", () => {
 
   expect(mockPlayAlarm).toHaveBeenCalledTimes(1);
 });
+test("should clear existing interval when set is clicked multiple times", () => {
+  const input = page.window.document.querySelector("#alarmSet");
+  const button = page.window.document.querySelector("#set");
+
+  const clearIntervalSpy = jest.spyOn(page.window, "clearInterval");
+
+  input.value = "10";
+  button.click(); 
+
+  input.value = "20";
+  button.click();
+
+  expect(clearIntervalSpy).toHaveBeenCalledTimes(1);
+});
+test("should stop the countdown and reset the display when stop is clicked", () => {
+  const heading = page.window.document.querySelector("#timeRemaining");
+  const input = page.window.document.querySelector("#alarmSet");
+  const setButton = page.window.document.querySelector("#set");
+  const stopButton = page.window.document.querySelector("#stop");
+  input.value = "30";
+  setButton.click();
+  jest.runOnlyPendingTimers(); 
+
+  expect(heading).not.toHaveTextContent("Time Remaining: 00:30");
+  stopButton.click();
+
+  expect(heading).toHaveTextContent("How long can you focus: 00:00");
+  expect(input.value).toBe("0");
+}); 

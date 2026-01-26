@@ -1,15 +1,109 @@
-.centre {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+:root {
+  --bg-color: #0f172a;
+  --bg-alarm-or: #c27f04;
+  --bg-alarm-red: #c20a04;
+  --centre-bg-color: #020617;
+  --text-color: #e5e7eb;
+  --input-border-color: #334155;
+  --button-bg-color: #e5e7eb;
+  --button-text-color: #020617;
 }
 
-#alarmSet {
-  margin: 20px;
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+html {
+  font-size: 1rem;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-color);
+  display: grid;
+  place-items: center;
+  color: var(--text-color);
+}
+.centre {
+  container-type: inline-size;
+  background: var(--centre-bg-color);
+  padding: 2.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.6);
+  width: min(90%, 36rem);
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
+  margin: 0 0 1.25em;
+  font-size: 1.4em;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4em;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+#alarmSet {
+  width: 100%;
+  padding: 0.65em;
+  margin-bottom: 1.25em;
+  border-radius: 0.5em;
+  border: 1px solid var(--input-border-color);
+  background: inherit;
+  color: inherit;
+}
+
+button {
+  width: 100%;
+  padding: 0.65em;
+  border-radius: 0.5em;
+  border: none;
+  font-size: 0.95em;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#set {
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
+  margin-bottom: 0.75em;
+}
+
+#stop {
+  background: transparent;
+  color: inherit;
+  border: 1px solid var(--input-border-color);
+}
+
+
+@container (min-width: 32rem) {
+  h1 {
+    font-size: 1.6em;
+  }
+
+  button,
+  #alarmSet {
+    font-size: 1em;
+  }
+}
+
+@container (min-width: 40rem) {
+  .centre {
+    padding: 3rem;
+  }
+
+  h1 {
+    font-size: 1.9em;
+  }
+
+  button,
+  #alarmSet {
+    padding: 0.75em;
+    font-size: 1.05em;
+  }
 }
