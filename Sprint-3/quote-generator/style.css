@@ -1,1 +1,53 @@
-/** Write your CSS in here **/
+:root {
+    --primary: #063c02;
+    --secondary: #ffffff;
+    --action: #37ad31;
+    --font: Arial, sans-serif;
+    --radius: 0.625rem;
+    --border: 0.125rem solid var(--secondary);
+}
+body {
+    background: var(--primary);
+    font-family: var(--font);
+}
+
+main {
+    max-width: 37.5rem;
+    margin: 3rem auto;
+    padding: 1.25rem;
+    background: var(--secondary);
+    color: var(--primary);
+    border: var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.25rem;
+    margin-bottom: 1.25rem;
+}
+
+#quote {
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+#author {
+    font-size: 1.875rem;
+    margin: 0.75rem 1.25rem ;
+    text-align: right;
+}
+
+button {
+    font-size: 1.125rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--primary);
+    color: var(--secondary);
+    border: var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--action);
+}

@@ -5,3 +5,4 @@ function newQuote() {
     document.getElementById('author').textContent = quoteObj.author;
 }
 document.getElementById("new-quote").addEventListener("click", newQuote);
+document.addEventListener("DOMContentLoaded", newQuote);
